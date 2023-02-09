@@ -10,7 +10,7 @@ var data = [
       {
         name: "lcdirection",
         center: { lat: 25.260654, long: 82.986879 },
-        model: "./models/lc.gltf",
+        model: "./lc.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 180 0"
@@ -18,7 +18,7 @@ var data = [
       {
         name: "Welcomelc",
         center: { lat: 25.260654, long: 82.986879 },
-        model: "./models/Welcome.gltf",
+        model: "./Welcome.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0",
@@ -48,7 +48,7 @@ var data = [
       {
         name: "ccd",
         center: { lat: 25.258502, long: 82.987814 },
-        model: "./models/ccd.gltf",
+        model: "./ccd.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 270 0"
@@ -56,7 +56,7 @@ var data = [
       {
         name: "Adv welcome",
         center: { lat: 25.259153, long: 82.989267 },
-        model: "./models/Welcome.gltf",
+        model: "./Welcome.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0",
@@ -86,7 +86,7 @@ var data = [
       {
         name: "gtac",
         center: { lat: 25.259897, long: 82.983791 },
-        model: "./models/gtac.gltf",
+        model: "./gtac.gltf",
         scale: "30 30 30",
         render: false,
         rotation: " 0 90 0"
@@ -115,7 +115,7 @@ var data = [
       {
         name: "karma",
         center: { lat: 25.257157, long: 82.984955 },
-        model: "./models/karma.gltf",
+        model: "./karma.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0"
@@ -142,7 +142,7 @@ var data = [
       {
         name: "lake",
         center: { lat: 25.263332, long: 82.989657 },
-        model: "./models/iit.gltf",
+        model: "./iit.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 180 0"
@@ -150,7 +150,7 @@ var data = [
       {
         name: "lake welcome",
         center: { lat: 25.262, long: 82.989869 },
-        model: "./models/Welcome.gltf",
+        model: "./Welcome.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0",
@@ -180,7 +180,7 @@ var data = [
       {
         name: "dg",
         center: { lat: 25.263211, long: 82.986463 },
-        model: "./models/dg.gltf",
+        model: "./dg.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 180 0"
@@ -209,7 +209,7 @@ var data = [
       {
         name: "civildep",
         center: { lat: 25.263479, long: 82.992751 },
-        model: "./models/civil.gltf",
+        model: "./civil.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0"
@@ -238,7 +238,7 @@ var data = [
       {
         name: "sb",
         center: { lat: 25.261059, long: 82.993406 },
-        model: "./models/sb.gltf",
+        model: "./sb.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0"
@@ -267,7 +267,7 @@ var data = [
       {
         name: "lt1",
         center: { lat: 25.259807, long: 82.990731 },
-        model: "./models/lt1.gltf",
+        model: "./lt1.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 0 0"
@@ -296,7 +296,7 @@ var data = [
       {
         name: "sryia",
         center: { lat: 25.263026, long: 82.983826 },
-        model: "./models/sryia.gltf",
+        model: "./sryia.gltf",
         scale: "30 30 30",
         render: false,
         rotation: "0 270 0"
