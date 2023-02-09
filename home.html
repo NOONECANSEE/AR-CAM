@@ -57,7 +57,7 @@
 
     // getting places from REST APIs
     function loadPlaceFromAPIs(position, end) {
-            var endpoint = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf6248f2853286374f4cc8be62d0146cc38fdc&start=${position.longitude},${position.latitude}&end=${end.long},${end.lat}`;
+          var endpoint = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf6248f2853286374f4cc8be62d0146cc38fdc&start=76.4457706153407,30.36102170800566&end=${end.long},${end.lat}`;
       console.log(endpoint);
       return fetch(endpoint)
         .then(res => {
