@@ -360,10 +360,10 @@ window.onload = () => {
   }
 
   function renderplace() {
-    navigator.geolocation.getCurrentPosition(postion => {
+    navigator.geolocation.getCurrentPosition(position => {
       // console.log("calling here", postion);
       data.forEach(area => {
-        if (isPointInLayer(postion.coords, area.name)) {
+        if (isPointInLayer(position.coords, area.name)) {
           // console.log(area.placeArea);
           if (area.objects.length > 0) {
             area.objects.forEach(object => {
