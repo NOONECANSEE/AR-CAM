@@ -50,6 +50,58 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script>
+    $(window).on("load", () => {
+      navbutton.forEach(button => {
+        $(".modal-body").append(`<button
+                lat="${button.lat}"
+                long="${button.long}"
+                type="button"
+                class="list-group-item list-group-item-action"
+              >
+                ${button.name}
+              </button>`);
+      });
+
+      function drawpath(end) {
+        const scene = document.querySelector("a-scene");
+        return navigator.geolocation.getCurrentPosition(
+          function (position) {
+            loadPlaces(position.coords, end).then(places => {
+              places.forEach(place => {
+                const latitude = place[1];
+                const longitude = place[0];
+                const icon = document.createElement("a-image");
+                icon.setAttribute(
+                  "gps-entity-place",
+                  `latitude: ${latitude}; longitude: ${longitude};`
+                );
+                icon.setAttribute("name", place.name);
+                icon.setAttribute("src", "./map-marker.png");
+                icon.setAttribute("scale", "5, 5,5");
+                scene.appendChild(icon);
+              });
+            });
+          },
+          err => alert("Error in retrieving position"), // console.error(, err),
+          {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 27000
+          }
+        );
+      }
+
+      $(".modal-body button").click(e => {
+        $("#routes").modal("hide");
+        $("a-image").remove();
+        //   console.log($(e.target).attr("lat"));
+        var end = {
+          lat: $(e.target).attr("lat"),
+          long: $(e.target).attr("long")
+        };
+        drawpath(end);
+      });
+    });
     const loadPlaces = function (coords, end) {
       // console.log(end);
       return loadPlaceFromAPIs(coords, end);
@@ -57,7 +109,8 @@
 
     // getting places from REST APIs
     function loadPlaceFromAPIs(position, end) {
-          var endpoint = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf6248f2853286374f4cc8be62d0146cc38fdc&start=76.4457706153407,30.36102170800566&end=${end.long},${end.lat}`;
+      // var endpoint = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf62487ff45692bdc34cdfbc509ce51f522ec0&start=${position.longitude},${position.latitude}&end=${end.long},${end.lat}`;
+      var endpoint = `https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf6248f2853286374f4cc8be62d0146cc38fdc&start=${position.longitude},${position.latitude}&end=${end.long},${end.lat}`;
       console.log(endpoint);
       return fetch(endpoint)
         .then(res => {
@@ -168,58 +221,58 @@
       //   long: 82.9848
       // }
     ];
-    $(window).on("load", () => {
-      navbutton.forEach(button => {
-        $(".modal-body").append(`<button
-                lat="${button.lat}"
-                long="${button.long}"
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
-                ${button.name}
-              </button>`);
-      });
+    // $(window).on("load", () => {
+    //   navbutton.forEach(button => {
+    //     $(".modal-body").append(`<button
+    //             lat="${button.lat}"
+    //             long="${button.long}"
+    //             type="button"
+    //             class="list-group-item list-group-item-action"
+    //           >
+    //             ${button.name}
+    //           </button>`);
+    //   });
 
-      function drawpath(end) {
-        const scene = document.querySelector("a-scene");
-        return navigator.geolocation.getCurrentPosition(
-          function (position) {
-            loadPlaces(position.coords, end).then(places => {
-              places.forEach(place => {
-                const latitude = place[1];
-                const longitude = place[0];
-                const icon = document.createElement("a-image");
-                icon.setAttribute(
-                  "gps-entity-place",
-                  `latitude: ${latitude}; longitude: ${longitude};`
-                );
-                icon.setAttribute("name", place.name);
-                icon.setAttribute("src", "./map-marker.png");
-                icon.setAttribute("scale", "5, 5,5");
-                scene.appendChild(icon);
-              });
-            });
-          },
-          err => alert("Error in retrieving position"), // console.error(, err),
-          {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 27000
-          }
-        );
-      }
+    //   function drawpath(end) {
+    //     const scene = document.querySelector("a-scene");
+    //     return navigator.geolocation.getCurrentPosition(
+    //       function (position) {
+    //         loadPlaces(position.coords, end).then(places => {
+    //           places.forEach(place => {
+    //             const latitude = place[1];
+    //             const longitude = place[0];
+    //             const icon = document.createElement("a-image");
+    //             icon.setAttribute(
+    //               "gps-entity-place",
+    //               `latitude: ${latitude}; longitude: ${longitude};`
+    //             );
+    //             icon.setAttribute("name", place.name);
+    //             icon.setAttribute("src", "./map-marker.png");
+    //             icon.setAttribute("scale", "5, 5,5");
+    //             scene.appendChild(icon);
+    //           });
+    //         });
+    //       },
+    //       err => alert("Error in retrieving position"), // console.error(, err),
+    //       {
+    //         enableHighAccuracy: true,
+    //         maximumAge: 0,
+    //         timeout: 27000
+    //       }
+    //     );
+    //   }
 
-      $(".modal-body button").click(e => {
-        $("#routes").modal("hide");
-        $("a-image").remove();
-        //   console.log($(e.target).attr("lat"));
-        var end = {
-          lat: $(e.target).attr("lat"),
-          long: $(e.target).attr("long")
-        };
-        drawpath(end);
-      });
-    });
+    //   $(".modal-body button").click(e => {
+    //     $("#routes").modal("hide");
+    //     $("a-image").remove();
+    //     //   console.log($(e.target).attr("lat"));
+    //     var end = {
+    //       lat: $(e.target).attr("lat"),
+    //       long: $(e.target).attr("long")
+    //     };
+    //     drawpath(end);
+    //   });
+    // });
   </script>
 </body>
 
